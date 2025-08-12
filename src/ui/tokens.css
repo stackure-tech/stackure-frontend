@@ -1,0 +1,129 @@
+/* ENTERPRISE CLEAN – Light + Lime Accent */
+:root{
+  /* Neutrals */
+  --bg:#F7F8FA;           /* tło aplikacji */
+  --fg:#0A0C10;           /* tekst główny */
+  --muted:#6B7280;        /* tekst pomocniczy */
+  --surface:#FFFFFF;      /* karty/panele */
+  --surface-2:#F3F4F6;    /* tła pól */
+  --border:#E5E7EB;       /* linie podziału */
+
+  /* Accent (lime) */
+  --accent:#B8F94B;       /* lime (badge/akcent) */
+  --accent-ink:#1F2A05;   /* tekst na lime */
+  --accent-weak:#ECFBD0;  /* delikatne tło akcentu */
+
+  /* Actions */
+  --primary:#111827;      /* ciemny przycisk */
+  --danger:#C11C2A;
+
+  /* 3D Scene Colors */
+  --scene-bg: #f8f9fa;
+  --scene-container: rgba(255, 255, 255, 0.6);
+  --scene-container-edges: #495057;
+  --scene-grid-main: #dee2e6;
+  --scene-grid-accent: #a7f432;   /* lime akcent co 1m */
+  --scene-box-colors: #8ecae6, #ffb703, #219ebc, #adb5bd, #c77dff;
+  --scene-box-active-outline: #a7f432;
+  --scene-box-active-glow: #a7f432;
+
+  /* Shape & motion */
+  --r-sm:12px; --r-md:16px; --r-lg:20px; --r-xl:28px; /* soft pills */
+  --space-2:10px; --space-3:12px; --space-4:16px; --space-5:20px;
+  --t-fast:130ms; --t-med:220ms; --t-slow:360ms;
+  --ease:cubic-bezier(.2,.8,.2,1);
+
+  --font: Inter, "Segoe UI", Roboto, system-ui, -apple-system, Arial, sans-serif;
+}
+
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);-webkit-font-smoothing:antialiased}
+
+/* Cards / panels */
+.panel, .card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r-lg);
+  box-shadow:0 1px 1px rgba(0,0,0,.04), 0 10px 30px rgba(0,0,0,.08);
+}
+
+/* Inputs/selects */
+.input,.select,.textarea{
+  width:100%;
+  background:var(--surface);
+  color:var(--fg);
+  border:1px solid var(--border);
+  border-radius:var(--r-md);
+  padding:10px 12px;
+  outline:none;
+  transition:border-color var(--t-med) var(--ease), box-shadow var(--t-med) var(--ease), background var(--t-med) var(--ease);
+}
+.input:hover,.select:hover,.textarea:hover{ border-color:#D1D5DB; }
+.input:focus,.select:focus,.textarea:focus{
+  border-color:#A5B4FC;
+  box-shadow:0 0 0 3px rgba(165,180,252,.35);
+  background:#FFF;
+}
+
+/* Buttons */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  gap:8px;
+  border:1px solid #111827;
+  background:var(--primary);
+  color:#FFF;
+  border-radius:var(--r-xl);           /* pill */
+  padding:10px 16px;
+  font-weight:800;
+  cursor:pointer;
+  transition:transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease), opacity var(--t-fast) var(--ease);
+}
+.btn:hover{ transform:translateY(-1px); box-shadow:0 6px 16px rgba(17,24,39,.18) }
+.btn:active{ transform:translateY(0); box-shadow:none }
+.btn-danger{
+  border:1px solid color-mix(in oklab,var(--danger) 40%, #000);
+  background:linear-gradient(180deg, var(--danger), #8f1420);
+  color:#fff5f6;
+}
+
+/* Lime badges / pills */
+.badge{
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--accent);
+  color:var(--accent-ink);
+  border-radius:999px;
+  padding:4px 10px;
+  font-weight:700; font-size:12px;
+}
+.badge-weak{
+  background:var(--accent-weak);
+  color:#2A3A07;
+}
+
+/* Utilities */
+.stack-v{display:flex;flex-direction:column;gap:var(--space-4)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3)}
+.label{font-size:13px;font-weight:700;color:#374151}
+.h3{margin:0 0 6px 0;font-weight:900;font-size:15px;letter-spacing:.2px}
+.subtle{color:var(--muted);font-size:13px}
+
+/* Accessible focus */
+.kbd-focus:focus-visible{outline:3px solid rgba(165,180,252,.9); outline-offset:2px; border-radius:var(--r-md)}
+
+/* Accordion (clean, rounded) */
+.accordion{ border:1px solid var(--border); border-radius:var(--r-lg); background:var(--surface); }
+.acc-head{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 14px; cursor:pointer; user-select:none; font-weight:800;
+  border-radius:var(--r-lg);
+  transition:background var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease);
+}
+.acc-head:hover{ background:#F9FAFB; }
+.acc-icon{ transition:transform var(--t-med) var(--ease), opacity var(--t-med) var(--ease); opacity:.9; }
+.acc-body{ padding:14px; border-top:1px solid var(--border); border-bottom-left-radius:var(--r-lg); border-bottom-right-radius:var(--r-lg); }
+.acc-collapsed .acc-body{ display:none; }
+.acc-collapsed .acc-icon{ transform:rotate(-90deg); }
+
+/* Form tweaks */
+input[type="checkbox"]{ accent-color: var(--accent); }

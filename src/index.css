@@ -1,0 +1,12 @@
+@import "./ui/tokens.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Blokada scrolla, pełne wykorzystanie okna */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
