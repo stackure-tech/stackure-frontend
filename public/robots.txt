@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://stackure.tech/sitemap.xml
